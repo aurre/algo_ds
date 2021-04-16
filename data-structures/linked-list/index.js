@@ -31,6 +31,10 @@ class LinkedList {
         this.length++;
     }
 
+    // Insert at index (WIP)
+
+    // Remove at index (WIP)
+
     // Get at index
     getAt(index) {
         let current = this.head;
