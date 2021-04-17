@@ -31,9 +31,55 @@ class LinkedList {
         this.length++;
     }
 
-    // Insert at index (WIP)
+    // Insert at index
+    insertAtIndex(data, index) {
+        // If index is out of range
+        if (index > 0 && index > this.size) {
+            return;
+        }
+        // If first index
+        if (index === 0) {
+            this.prepend(data);
+            return;
+        }
 
-    // Remove at index (WIP)
+        const newNode = new Node(data);
+        let currentNode = this.head;
+        let previus = currentNode;
+        let count = 0;
+
+        while (count < index) {
+            previus = currentNode;
+            count++;
+            currentNode = currentNode.next;
+        }
+
+        newNode.next = currentNode;
+        previus.next = newNode;
+    }
+
+    // Remove at index
+    removeAt(index) {
+        let currentNode = this.head;
+        let previus;
+        let count = 0;
+
+        // If index is zero
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+        while (currentNode) {
+            if (index === count) {
+                previus.next = currentNode.next;
+                count++;
+                return;
+            }
+            previus = currentNode;
+            currentNode = currentNode.next;
+            count++;
+        }
+    }
 
     // Get at index
     getAt(index) {
@@ -72,6 +118,8 @@ list.prepend(300);
 // list.prepend(200);
 // list.prepend(100);
 list.insertLastNode(400);
+list.insertAtIndex(200, 0);
+list.removeAt(1);
 // list.insertLastNode(500);
 // list.clear();
 // list.getAt(0);
